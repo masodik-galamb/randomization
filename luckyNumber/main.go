@@ -1,5 +1,13 @@
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"time"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: First Turn Winner
 //
@@ -18,4 +26,45 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+
+	const (
+		usage = `I want to play a game with you.
+Pick up some number and let's see how lucky you are.`
+		positive = `Provide a positive number.`
+		maxTurns = 3
+	)
+
+	//rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
+
+	args := os.Args[1:]
+
+	if len(args) != 1 {
+		fmt.Println(usage)
+		return
+	}
+
+	guess, err := strconv.Atoi(args[0])
+	if err != nil {
+		fmt.Printf("It's is not a number.")
+		return
+	}
+	if guess < 0 {
+		fmt.Println(positive)
+		return
+	}
+
+	for turn := 0; turn < maxTurns; turn++ {
+		n := rand.Intn(guess + 1)
+
+		fmt.Println(turn)
+
+		if n == guess {
+			fmt.Println("You win!")
+			fmt.Printf("Random nubber was %d\n", n)
+			return
+		}
+	}
+	fmt.Println("You loose! Wanna try again?")
+
 }
