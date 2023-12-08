@@ -31,7 +31,7 @@ func main() {
 		usage = `I want to play a game with you.
 Pick up some number and let's see how lucky you are.`
 		positive = `Provide a positive number.`
-		maxTurns = 3
+		maxTurns = 9
 	)
 
 	//rand.Seed(time.Now().UnixNano())
