@@ -30,8 +30,8 @@ func main() {
 	const (
 		usage = `I want to play a game with you.
 Pick up some number and let's see how lucky you are.`
-		positive = `Provide a positive number.`
-		maxTurns = 9
+		positive = `Provide a positive, non-zero number.`
+		maxTurns = 3
 	)
 
 	//rand.Seed(time.Now().UnixNano())
@@ -49,7 +49,7 @@ Pick up some number and let's see how lucky you are.`
 		fmt.Printf("It's is not a number.")
 		return
 	}
-	if guess < 0 {
+	if guess <= 0 {
 		fmt.Println(positive)
 		return
 	}
@@ -62,6 +62,9 @@ Pick up some number and let's see how lucky you are.`
 		if n == guess {
 			fmt.Println("You win!")
 			fmt.Printf("Random nubber was %d\n", n)
+			if turn == 0 {
+				fmt.Println("Wow! You win from the first move! Seems like you're super lucky!")
+			}
 			return
 		}
 	}
