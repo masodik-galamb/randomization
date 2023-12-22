@@ -27,8 +27,8 @@ import (
 
 const (
 	usage = `🍀                                                   🍀
-	I want to play a game with you.
-Pick up some number and let's see how lucky you are...
+	   I want to play a game with you.
+ Pick up some number and let's see how lucky you are.
 🍀                                                   🍀`
 	positive   = `Provide a positive, non-zero number.`
 	maxTurns   = 3
@@ -72,6 +72,18 @@ func main() {
 			}
 			return
 		}
+		/*  probably better solution due not nesting if statemnt
+		if n != guess {
+			continue
+		}
+
+		if turn == 1 {
+			fmt.Println("superWin, n")
+		} else {
+			fmt.Println("regularWin, n")
+		}
+		return
+		*/
 	}
 	fmt.Println(loose)
 }
